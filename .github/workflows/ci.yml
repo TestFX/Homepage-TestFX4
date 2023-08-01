@@ -16,3 +16,8 @@ jobs:
       - name: Fetch sources
         uses: actions/checkout@v3
 
+      - name: Generate HTML from Markdown
+        uses: ldeluigi/markdown-docs@latest
+        with:
+          src: doc
+          dst: web
