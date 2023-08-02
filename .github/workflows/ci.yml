@@ -7,6 +7,11 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  TFX_GPG_PASSWORD: ${{ secrets.TFX_GPG_PASSWORD }}
+  TFX_CI_USERNAME: ${{ secrets.TFX_CI_USERNAME }}
+  WEBSITE_DEPLOY_PATH: '/opt/tfx/testfx/website'
+
 jobs:
   build:
     name: Build
@@ -16,8 +21,20 @@ jobs:
       - name: Fetch sources
         uses: actions/checkout@v3
 
+      - name: Configuration
+        shell: bash
+        run: |
+          source .github/config.sh
+
       - name: Generate HTML from Markdown
         uses: ldeluigi/markdown-docs@latest
         with:
-          src: doc
-          dst: web
+          src: web
+          dst: build
+
+      - name: Deploy
+        run: |
+          ssh -t ${{env.TFX_CI_USERNAME}}@soderquist.net "mkdir -p ${{env.WEBSITE_DEPLOY_PATH}};" 2>&1
+          if [ $? -ne 0 ]; then exit 1; fi
+          scp -r -B build/* ${{env.TFX_CI_USERNAME}}@soderquist.net:${{env.WEBSITE_DEPLOY_PATH}} 2>&1
+          if [ $? -ne 0 ]; then exit 1; fi
