@@ -10,7 +10,7 @@ on:
 env:
   TFX_GPG_PASSWORD: ${{ secrets.TFX_GPG_PASSWORD }}
   TFX_CI_USERNAME: ${{ secrets.TFX_CI_USERNAME }}
-  WEBSITE_DEPLOY_PATH: '/opt/tfx/testfx/website'
+  WEBSITE_DEPLOY_PATH: '/opt/tfx/website'
 
 jobs:
   build:
