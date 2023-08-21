@@ -26,11 +26,17 @@ jobs:
         run: |
           source .github/config.sh
 
+#      - name: Generate HTML from Markdown
+#        uses: ldeluigi/markdown-docs@latest
+#        with:
+#          src: web
+#          dst: build
+
       - name: Generate HTML from Markdown
-        uses: ldeluigi/markdown-docs@latest
+        uses: natescherer/markdown-to-html-with-github-style-action@v1
         with:
-          src: web
-          dst: build
+          path: index.md
+          outputpath: build
 
       - name: Deploy
         run: |
