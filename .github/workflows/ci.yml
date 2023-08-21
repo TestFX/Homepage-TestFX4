@@ -33,7 +33,7 @@ jobs:
 #          dst: build
 
       - name: Generate HTML from Markdown
-        uses: natescherer/markdown-to-html-with-github-style-action@vlatest
+        uses: natescherer/markdown-to-html-with-github-style-action@latest
         with:
           path: index.md
           outputpath: build
