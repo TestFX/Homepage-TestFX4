@@ -39,7 +39,7 @@ jobs:
 #          outputpath: build
 
       - name: Generate HTML from Markdown
-        uses: ZacJW/markdown-html-action@@latest
+        uses: ZacJW/markdown-html-action@latest
         with:
           input_files: '[["*.md"]]'
           output_files: '["build"]'
