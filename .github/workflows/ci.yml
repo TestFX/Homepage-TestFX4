@@ -35,13 +35,13 @@ jobs:
       - name: Generate HTML from Markdown
         uses: natescherer/markdown-to-html-with-github-style-action@v1.1.0
         with:
-          path: index.md
+          path: web/index.md
           outputpath: build
 
 #      - name: Generate HTML from Markdown
 #        uses: ZacJW/markdown-html-action@1.1.0
 #        with:
-#          input_files: '[["*.md"]]'
+#          input_files: '[["web/*"]]'
 #          output_files: '["build"]'
 
       - name: Deploy
