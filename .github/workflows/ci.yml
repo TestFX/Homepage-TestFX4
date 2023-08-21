@@ -32,11 +32,17 @@ jobs:
 #          src: web
 #          dst: build
 
+#      - name: Generate HTML from Markdown
+#        uses: natescherer/markdown-to-html-with-github-style-action@latest
+#        with:
+#          path: index.md
+#          outputpath: build
+
       - name: Generate HTML from Markdown
-        uses: natescherer/markdown-to-html-with-github-style-action@latest
+        uses: ZacJW/markdown-html-action@@latest
         with:
-          path: index.md
-          outputpath: build
+          input_files: '[["*.md"]]'
+          output_files: '["build"]'
 
       - name: Deploy
         run: |
