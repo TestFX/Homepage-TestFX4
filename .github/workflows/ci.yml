@@ -26,18 +26,21 @@ jobs:
         run: |
           source .github/config.sh
 
+# Worked, but generated more than expected. It made a nice documentation site.
 #      - name: Generate HTML from Markdown
 #        uses: ldeluigi/markdown-docs@latest
 #        with:
 #          src: web
 #          dst: build
 
+# Worked, but had trouble with the icon in the header
       - name: Generate HTML from Markdown
         uses: natescherer/markdown-to-html-with-github-style-action@v1.1.0
         with:
           path: web/index.md
           outputpath: build
 
+# Not working, unable to find action
 #      - name: Generate HTML from Markdown
 #        uses: ZacJW/markdown-html-action@1.1.0
 #        with:
